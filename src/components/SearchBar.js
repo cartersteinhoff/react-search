@@ -1,3 +1,5 @@
+//this is a comment!
+
 function SearchBar({ searchInput, handleSearchInput }) {
   return (
     <div className="mb-3">
