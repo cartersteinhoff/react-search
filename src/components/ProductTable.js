@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function ProductTableCell({ book }) {
   return (
     <>
@@ -34,3 +32,4 @@ function ProductTable({ searchInput, books }) {
 }
 
 export default ProductTable;
+

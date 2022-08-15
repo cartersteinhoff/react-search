@@ -15,9 +15,9 @@ function App() {
   const handleSearchInput = (e) => {
     setSearchInput(e.target.value);
 
-    if (!e.target.value) {
-      setBooks(booksArray);
-    } else {
+    if (!e.target.value) setBooks(booksArray);
+
+    else {
       const newBooks = booksArray.filter(
         (book) => book.year === +e.target.value
       );
