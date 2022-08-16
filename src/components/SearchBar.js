@@ -10,7 +10,7 @@ function SearchBar({
         type="text"
         name="search"
         id="search"
-        placeholder="Enter search..."
+        placeholder="Enter Search..."
         autocomplete="off"
         className="w-full p-2 rounded bg-github-blue border border-white"
         value={searchInput}
