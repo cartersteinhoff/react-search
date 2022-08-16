@@ -8,20 +8,38 @@ function ProductTableCell({ book }) {
   );
 }
 
-function ProductTable({ searchInput, books }) {
+function ProductTable({ books }) {
   return (
     <>
-      <table className="border">
+      <table className="border table-fixed">
         <thead className="bg-darkBlueGray">
           <tr className="text-left">
-            <th className="border border-slate-600 px-3 py-2">Author</th>
-            <th className="border border-slate-600 px-3 py-2">Title</th>
-            <th className="border border-slate-600 px-3 py-2">Year</th>
+            <th
+              style={{ width: "180px" }}
+              className="border border-slate-600 px-3 py-2"
+            >
+              Author
+              <i class="float-right arrow down mt-1.5" />
+            </th>
+            <th
+              style={{ width: "180px" }}
+              className="border border-slate-600 px-3 py-2"
+            >
+              Title
+              <i class="float-right arrow down mt-1.5" />
+            </th>
+            <th
+              style={{ width: "180px" }}
+              className="border border-slate-600 px-3 py-2"
+            >
+              Year
+              <i class="float-right arrow down mt-1.5" />
+            </th>
           </tr>
         </thead>
         <tbody className="bg-darkGray">
           {books.map((book) => (
-            <tr>
+            <tr key={book.id}>
               <ProductTableCell book={book} />
             </tr>
           ))}
@@ -32,4 +50,3 @@ function ProductTable({ searchInput, books }) {
 }
 
 export default ProductTable;
-
