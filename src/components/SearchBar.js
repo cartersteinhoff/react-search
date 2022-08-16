@@ -11,6 +11,7 @@ function SearchBar({
         name="search"
         id="search"
         placeholder="Enter search..."
+        autocomplete="off"
         className="w-full p-2 rounded bg-github-blue border border-white"
         value={searchInput}
         onChange={handleSearchInput}
