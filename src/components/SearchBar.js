@@ -11,7 +11,7 @@ function SearchBar({
         name="search"
         id="search"
         placeholder="Enter Search..."
-        autocomplete="off"
+        autoComplete="off"
         className="w-full p-2 rounded bg-github-blue border border-white"
         value={searchInput}
         onChange={handleSearchInput}
@@ -25,8 +25,9 @@ function SearchBar({
           checked={searchType === "author"}
           onChange={handleSearchType}
           className="mr-1.5"
+          readOnly
         />
-        <label for="author">Author</label>
+        <label htmlFor="author">Author</label>
         <input
           type="radio"
           name="search-option"
@@ -35,8 +36,9 @@ function SearchBar({
           checked={searchType === "title"}
           onChange={handleSearchType}
           className="ml-4 mr-1.5"
+          readOnly
         />
-        <label for="title">Title</label>
+        <label htmlFor="title">Title</label>
 
         <input
           type="radio"
@@ -46,8 +48,9 @@ function SearchBar({
           checked={searchType === "year"}
           onClick={handleSearchType}
           className="ml-4 mr-1.5 "
+          readOnly
         />
-        <label for="year">Year</label>
+        <label htmlFor="year">Year</label>
       </div>
     </div>
   );

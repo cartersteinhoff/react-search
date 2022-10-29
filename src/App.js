@@ -2,12 +2,6 @@ import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import ProductTable from "./components/ProductTable";
 
-const booksArray = [
-  { id: 1, author: "Orson Scott Card", title: "Ender's Game", year: "2001" },
-  { id: 2, author: "Emma Stone", title: "Twilight", year: "2008" },
-  { id: 3, author: "Tyrone Simmons", title: "Eragon", year: "2017" },
-];
-
 const sortFunction = (a, b) => {
   const nameA = a.author.toUpperCase();
   const nameB = b.author.toUpperCase();
@@ -23,16 +17,34 @@ const sortFunction = (a, b) => {
 
 function App() {
   const [flag, setFlag] = useState(true);
-  const [books, setBooks] = useState(booksArray);
+  const [books, setBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchType, updateSearchType] = useState("author");
 
+  // useEffect(() => {
+  //   // updateSearchType("year");
+  //   setBooks(books.sort(sortFunction));
+  //   setFlag(false);
+  // }, [flag]);
+
   useEffect(() => {
-    console.log("Use Effect");
-    // updateSearchType("year");
-    setBooks(books.sort(sortFunction));
-    setFlag(false);
-  }, [flag]);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:4000");
+        const posts = await response.json();
+        console.log(posts);
+        setBooks(posts);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setFilteredBooks(books);
+  }, []);
 
   const handleSearchType = ({ target }) => {
     updateSearchType(target.value);
@@ -40,12 +52,12 @@ function App() {
 
   const handleSearchInput = (e) => {
     setSearchInput(e.target.value);
-    if (!e.target.value) setBooks(booksArray);
+    if (!e.target.value) setFilteredBooks(books);
     else {
-      const newBooks = booksArray.filter(
+      const newBooks = books.filter(
         (book) => book[searchType] === e.target.value
       );
-      setBooks(newBooks);
+      setFilteredBooks(newBooks);
     }
   };
 
@@ -58,7 +70,7 @@ function App() {
           searchType={searchType}
           value={searchInput}
         />
-        <ProductTable searchInput={searchInput} books={books} />
+        <ProductTable searchInput={searchInput} books={filteredBooks} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ function ProductTableCell({ book }) {
     <>
       <td className="border border-slate-700 px-3 py-2">{book.author}</td>
       <td className="border border-slate-700 px-3 py-2">{book.title}</td>
-      <td className="border border-slate-700 px-3 py-2">{book.year}</td>
+      <td className="border border-slate-700 px-3 py-2">{book.year_published}</td>
     </>
   );
 }
@@ -19,21 +19,21 @@ function ProductTable({ books }) {
               className="border border-slate-600 px-3 py-2"
             >
               Author
-              <i class="float-right arrow down mt-1.5" />
+              <i className="float-right arrow down mt-1.5" />
             </th>
             <th
               style={{ width: "180px" }}
               className="border border-slate-600 px-3 py-2"
             >
               Title
-              <i class="float-right arrow down mt-1.5" />
+              <i className="float-right arrow down mt-1.5" />
             </th>
             <th
               style={{ width: "180px" }}
               className="border border-slate-600 px-3 py-2"
             >
               Year
-              <i class="float-right arrow down mt-1.5" />
+              <i className="float-right arrow down mt-1.5" />
             </th>
           </tr>
         </thead>
